@@ -1,0 +1,28 @@
+{
+  "name": "bootstrap-expanding-input",
+  "version": "0.0.1",
+  "authors": [
+    "Gregor Martynus <gregor@martynus.net>"
+  ],
+  "description": "bootstrap plugin to make `<input>` and `<textareas>` fit the size of their content",
+  "main": [
+    "bootstrap-expanding-input.js",
+    "bootstrap-expanding-input.css"
+  ],
+  "keywords": [
+    "bootstrap",
+    "plugin",
+    "table",
+    "form"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.0"
+  }
+}
