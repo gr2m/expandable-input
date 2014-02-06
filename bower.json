@@ -1,13 +1,13 @@
 {
-  "name": "bootstrap-expanding-input",
+  "name": "bootstrap-expandable-input",
   "version": "0.0.2",
   "authors": [
     "Gregor Martynus <gregor@martynus.net>"
   ],
-  "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as auto-expanding inputs.",
+  "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.",
   "main": [
-    "bootstrap-expanding-input.js",
-    "bootstrap-expanding-input.css"
+    "bootstrap-expandable-input.js",
+    "bootstrap-expandable-input.css"
   ],
   "keywords": [
     "bootstrap",

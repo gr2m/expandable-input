@@ -1,8 +1,8 @@
-Expanding Inputs – A bootstrap plugin
+Expandable Input – A bootstrap plugin
 =====================================
 
 > A Bootstrap plugin to use <{span|div|...} contenteditable> as
-  auto-expanding inputs.
+  expandable inputs.
 
 
 Installation
@@ -11,7 +11,7 @@ Installation
 Simplest way to install is using [bower](http://bower.io/):
 
 ```
-bower install --save bootstrap-expanding-inputs
+bower install --save bootstrap-expandable-input
 ```
 
 
@@ -24,8 +24,8 @@ Usage
 <script src="bootstrap.js"></script>
 
 <!-- load editable-table assets -->
-<link rel="stylesheet" type="text/css" href="bootstrap-expanding-inputs.css">
-<script src="bootstrap-expanding-inputs.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap-expandable-inputs.css">
+<script src="bootstrap-expandable-inputs.js"></script>
 
 <!-- The behaviour is initialzied on first interaction -->
 <p>
@@ -58,7 +58,7 @@ Notes
 Fine Print
 ----------
 
-The Expanding Inputs Plugin have been authored by [Gregor Martynus](https://github.com/gr2m),
+The Expandable Input Plugin have been authored by [Gregor Martynus](https://github.com/gr2m),
 proud member of [Team Hoodie](http://hood.ie/). If you feel like it, please support our work
 on Hoodie: [gittip us!](https://www.gittip.com/hoodiehq/).
 
