@@ -1,8 +1,8 @@
 Expanding Inputs – A bootstrap plugin
 =====================================
 
-> A Bootstrap plugin to make `<input>` and `<textareas>`
-  fit the size of their content
+> A Bootstrap plugin to use <{span|div|...} contenteditable> as
+  auto-expanding inputs.
 
 
 Installation
