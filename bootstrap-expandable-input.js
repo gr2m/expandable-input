@@ -9,14 +9,13 @@
   //
   var ExpandableInput = function (el) {
     var $input;
-    var type;
     var valueOnFocus;
 
     // 1. cache elements for performance reasons and
     // 2. setup event bindings
     function initialize () {
       $input = $(el);
-      type = $input.attr('type');
+      setName();
       initStyling();
 
       $input.on('input', handleInput);
@@ -49,6 +48,13 @@
     // Internal Methods
     // ----------------
 
+    //
+    //
+    //
+    function setName () {
+      var name = $input.attr('name');
+      if (name) $input[0].name = name;
+    }
 
     //
     // adds `contenteditable-inline` or `contenteditable-block`,
