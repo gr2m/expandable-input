@@ -10,6 +10,7 @@
   var ExpandableInput = function (el) {
     var $input;
     var type;
+    var valueOnFocus;
 
     // 1. cache elements for performance reasons and
     // 2. setup event bindings
@@ -19,16 +20,29 @@
       initStyling();
 
       $input.on('input', handleInput);
+      $input.on('focus', handleFocus);
+      $input.on('blur', handleBlur);
     }
 
     // Event handlers
     // --------------
 
     //
-    //
-    //
     function handleInput ( /*event*/ ) {
       cleanupIfEmpty();
+    }
+
+    //
+    function handleFocus ( /*event*/ ) {
+      valueOnFocus = $input.text();
+    }
+
+    //
+    function handleBlur ( /*event*/ ) {
+      var valueOnBlur = $input.text();
+      if (valueOnBlur !== valueOnFocus) {
+        $input.trigger('change');
+      }
     }
 
 
@@ -131,6 +145,7 @@
   $(document).on('focus.bs.expandableInput.data-api', '[contenteditable]', function(event) {
     var $input = $(event.currentTarget);
     if (! $input.data('bs.expandableInput')) {
+      event.preventDefault();
       $input.expandableInput();
       $input.trigger(event.type);
     }

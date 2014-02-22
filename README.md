@@ -49,9 +49,8 @@ $('[name=email]').on('input', function(event) {
 Notes
 -----
 
-- `$.fn.val()` & `$.fn.select()` gets patched to work with the `contenteditable` inputs
+- `$.fn.val()` & `$.fn.select()` are being patched to work with the `contenteditable` inputs
 - `display: inline` is currently not supported. It gets set to inline-block when initialized.
-- `change` event is not supported. Listen to `input` instead.
 - no html5 validation or password=type etc is not supported.
 
 
