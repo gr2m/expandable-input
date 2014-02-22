@@ -15,7 +15,7 @@ html body [contenteditable] div {
 }
 html body [contenteditable]:empty:before {
   content: attr(placeholder);
-  color: #aaa;
+  color: #a9a9a9;
 }
 
 html body [contenteditable].contenteditable-inline {
