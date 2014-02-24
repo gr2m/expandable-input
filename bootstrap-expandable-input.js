@@ -21,6 +21,7 @@
       $input.on('input', handleInput);
       $input.on('focus', handleFocus);
       $input.on('blur', handleBlur);
+      $input.on('keyup', handleKeyUp);
     }
 
     // Event handlers
@@ -41,6 +42,14 @@
       var valueOnBlur = $input.text();
       if (valueOnBlur !== valueOnFocus) {
         $input.trigger('change');
+      }
+    }
+
+    //
+    function handleKeyUp ( event ) {
+      var enteredViaTabKey = event.which === 9;
+      if (enteredViaTabKey) {// TAB
+        $input.select();
       }
     }
 
