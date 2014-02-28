@@ -130,7 +130,7 @@
     var origVal = $.fn.val;
     $.fn.val = function(text) {
       if ($(this).is('[contenteditable]')) {
-        if (! text) {
+        if (typeof text === 'undefined') {
           return $(this).text();
         }
 
