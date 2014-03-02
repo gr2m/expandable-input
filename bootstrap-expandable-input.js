@@ -164,11 +164,19 @@
 
   $(document).on('focus.bs.expandableInput.data-api', '[contenteditable]', function(event) {
     var $input = $(event.currentTarget);
-    if (! $input.data('bs.expandableInput')) {
-      event.preventDefault();
-      $input.expandableInput();
-      $input.trigger(event.type);
-    }
+
+    // already initialized? Stop here.
+    if ($input.data('bs.expandableInput')) return;
+
+    // catch event & silent it
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    // init expandable behaviour
+    $input.expandableInput();
+
+    // retrigger event
+    $input.trigger(event.type);
   });
 
 
