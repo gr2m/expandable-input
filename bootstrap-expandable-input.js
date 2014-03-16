@@ -166,17 +166,14 @@
     var $input = $(event.currentTarget);
 
     // already initialized? Stop here.
-    if ($input.data('bs.expandableInput')) return;
+    if ($input.data('bs.expandableInput')) return true;
 
-    // catch event & silent it
     event.preventDefault();
     event.stopImmediatePropagation();
 
     // init expandable behaviour
     $input.expandableInput();
-
-    // retrigger event
-    $input.trigger(event.type);
+    $input.trigger( $.Event(event) );
   });
 
 
