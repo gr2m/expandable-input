@@ -130,11 +130,11 @@
     var origVal = $.fn.val;
     $.fn.val = function(text) {
       if ($(this).is('[contenteditable]')) {
-        if (typeof text === 'undefined') {
+        if (arguments.length === 0) {
           return $(this).text();
         }
 
-        text = text.replace(/\s+$/g, '&nbsp;');
+        text = String(text || '').replace(/\s+$/g, '&nbsp;');
         return $(this).html( text );
       }
       return origVal.apply(this, arguments);
