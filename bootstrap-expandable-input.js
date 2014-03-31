@@ -129,13 +129,13 @@
   function patchJQueryVal () {
     var origVal = $.fn.val;
     $.fn.val = function(text) {
-      if ($(this).is('[contenteditable]')) {
+      if (this.is('[contenteditable]')) {
         if (arguments.length === 0) {
-          return $(this).text();
+          return this[0].innerText;
         }
 
-        text = String(text || '').replace(/\s+$/g, '&nbsp;');
-        return $(this).html( text );
+        text = String(text || '').replace(/\n/g, '<br>').replace(/\s+$/g, '&nbsp;');
+        return this.html( text );
       }
       return origVal.apply(this, arguments);
     };
