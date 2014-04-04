@@ -126,6 +126,11 @@
   //
   // implements $('[contenteditable]').val()
   //
+  var regexNewLines = /\n/g;
+  var regexAmpersands = /&/g;
+  var regexLessThanSigns = /</g;
+  var regexGreaterThanSigns = />/g;
+  var regexWhiteSpaces = /\s+$/g;
   function patchJQueryVal () {
     var origVal = $.fn.val;
     $.fn.val = function(text) {
@@ -134,7 +139,12 @@
           return this[0].innerText;
         }
 
-        text = String(text || '').replace(/\n/g, '<br>').replace(/\s+$/g, '&nbsp;');
+        text = String(text || '');
+        text = text.replace(regexNewLines, '<br>');
+        text = text.replace(regexAmpersands, '&amp;');
+        text = text.replace(regexLessThanSigns, '&lt;');
+        text = text.replace(regexGreaterThanSigns, '&gt;');
+        text = text.replace(regexWhiteSpaces, '&nbsp;');
         return this.html( text );
       }
       return origVal.apply(this, arguments);
