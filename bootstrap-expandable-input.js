@@ -140,11 +140,11 @@
         }
 
         text = String(text || '');
-        text = text.replace(regexNewLines, '<br>');
         text = text.replace(regexAmpersands, '&amp;');
         text = text.replace(regexLessThanSigns, '&lt;');
         text = text.replace(regexGreaterThanSigns, '&gt;');
         text = text.replace(regexWhiteSpaces, '&nbsp;');
+        text = text.replace(regexNewLines, '<br>');
         return this.html( text );
       }
       return origVal.apply(this, arguments);
