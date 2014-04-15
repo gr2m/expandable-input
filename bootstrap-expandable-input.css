@@ -17,6 +17,11 @@ html body [contenteditable]:empty:before {
   content: attr(placeholder);
   color: #a9a9a9;
 }
+@media print {
+  html body [contenteditable]:empty:before {
+    visibility: hidden !important;
+  }
+}
 
 html body [contenteditable].contenteditable-inline {
   display: inline-block;
