@@ -136,7 +136,7 @@
     $.fn.val = function(text) {
       if (this.is('[contenteditable]')) {
         if (arguments.length === 0) {
-          return this[0].innerText;
+          return this[0].innerText || '';
         }
 
         text = String(text || '');
