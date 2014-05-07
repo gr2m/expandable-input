@@ -17,6 +17,9 @@ html body [contenteditable]:empty:before {
   content: attr(placeholder);
   color: #a9a9a9;
 }
+html body [contenteditable=false]:empty:before {
+  visibility: hidden !important;
+}
 @media print {
   html body [contenteditable]:empty:before {
     visibility: hidden !important;
