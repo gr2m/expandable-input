@@ -136,7 +136,9 @@
     $.fn.val = function(text) {
       if (this.is('[contenteditable]')) {
         if (arguments.length === 0) {
-          return this[0].textContent;
+          // .textContent removes all line breaks, which is why we
+          // have to use .innerHTML and manually remove all HTML tags
+          return this[0].innerText || this[0].textContent;
         }
 
         text = String(text || '');
