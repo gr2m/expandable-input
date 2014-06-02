@@ -131,6 +131,12 @@
   var regexLessThanSigns = /</g;
   var regexGreaterThanSigns = />/g;
   var regexWhiteSpaces = /\s+$/g;
+  var regexDivCloseAndOpen = /<div>\s*<\/div>/gi;
+  var regexLineBreakElements = /(<div>|<\/div>|<br\/?>)/gi;
+  var regexTags = /<[^>]+>/gi;
+  var regexSpaces = / /g;
+  var regexMultipleSpaces = / +/g;
+  var regexEntity = /&([^;]+);/g;
   function patchJQueryVal () {
     var origVal = $.fn.val;
     $.fn.val = function(text) {
@@ -138,7 +144,14 @@
         if (arguments.length === 0) {
           // .textContent removes all line breaks, which is why we
           // have to use .innerHTML and manually remove all HTML tags
-          return this[0].innerText || this[0].textContent;
+          // We could use .innerText, but that is not supported in Firefox
+          return this[0].innerHTML
+            .replace(regexDivCloseAndOpen, '\n')
+            .replace(regexLineBreakElements, '\n')
+            .replace(regexTags, '')
+            .replace(regexMultipleSpaces, ' ')
+            .replace(regexEntity, replaceEntity)
+            .trim();
         }
 
         text = String(text || '');
@@ -147,10 +160,16 @@
         text = text.replace(regexGreaterThanSigns, '&gt;');
         text = text.replace(regexWhiteSpaces, '&nbsp;');
         text = text.replace(regexNewLines, '<br>');
+        text = text.replace(regexSpaces, '&nbsp;');
         return this.html( text );
       }
       return origVal.apply(this, arguments);
     };
+  }
+
+  var ENTITIES = {'quot':'"','amp':'&','apos':'\'','lt':'<','gt':'>','nbsp':' ','iexcl':'¡','cent':'¢','pound':'£','curren':'¤','yen':'¥','brvbar':'¦','sect':'§','uml':'¨','copy':'©','ordf':'ª','laquo':'«','not':'¬','shy':' ','reg':'®','macr':'¯','deg':'°','plusmn':'±','sup2':'²','sup3':'³','acute':'´','micro':'µ','para':'¶','middot':'·','cedil':'¸','sup1':'¹','ordm':'º','raquo':'»','frac14':'¼','frac12':'½','frac34':'¾','iquest':'¿','Agrave':'À','Aacute':'Á','Acirc':'Â','Atilde':'Ã','Auml':'Ä','Aring':'Å','AElig':'Æ','Ccedil':'Ç','Egrave':'È','Eacute':'É','Ecirc':'Ê','Euml':'Ë','Igrave':'Ì','Iacute':'Í','Icirc':'Î','Iuml':'Ï','ETH':'Ð','Ntilde':'Ñ','Ograve':'Ò','Oacute':'Ó','Ocirc':'Ô','Otilde':'Õ','Ouml':'Ö','times':'×','Oslash':'Ø','Ugrave':'Ù','Uacute':'Ú','Ucirc':'Û','Uuml':'Ü','Yacute':'Ý','THORN':'Þ','szlig':'ß','agrave':'à','aacute':'á','acirc':'â','atilde':'ã','auml':'ä','aring':'å','aelig':'æ','ccedil':'ç','egrave':'è','eacute':'é','ecirc':'ê','euml':'ë','igrave':'ì','iacute':'í','icirc':'î','iuml':'ï','eth':'ð','ntilde':'ñ','ograve':'ò','oacute':'ó','ocirc':'ô','otilde':'õ','ouml':'ö','divide':'÷','oslash':'ø','ugrave':'ù','uacute':'ú','ucirc':'û','uuml':'ü','yacute':'ý','thorn':'þ','yuml':'ÿ','OElig':'Œ','oelig':'œ','Scaron':'Š','scaron':'š','Yuml':'Ÿ','fnof':'ƒ','circ':'ˆ','tilde':'˜','Alpha':'Α','Beta':'Β','Gamma':'Γ','Delta':'Δ','Epsilon':'Ε','Zeta':'Ζ','Eta':'Η','Theta':'Θ','Iota':'Ι','Kappa':'Κ','Lambda':'Λ','Mu':'Μ','Nu':'Ν','Xi':'Ξ','Omicron':'Ο','Pi':'Π','Rho':'Ρ','Sigma':'Σ','Tau':'Τ','Upsilon':'Υ','Phi':'Φ','Chi':'Χ','Psi':'Ψ','Omega':'Ω','alpha':'α','beta':'β','gamma':'γ','delta':'δ','epsilon':'ε','zeta':'ζ','eta':'η','theta':'θ','iota':'ι','kappa':'κ','lambda':'λ','mu':'μ','nu':'ν','xi':'ξ','omicron':'ο','pi':'π','rho':'ρ','sigmaf':'ς','sigma':'σ','tau':'τ','upsilon':'υ','phi':'φ','chi':'χ','psi':'ψ','omega':'ω','thetasym':'ϑ','upsih':'ϒ','piv':'ϖ','ensp':' ','emsp':' ','thinsp':'','zwnj':' ','zwj':' ','lrm':' ','rlm':' ','ndash':'–','mdash':'—','lsquo':'‘','rsquo':'’','sbquo':'‚','ldquo':'“','rdquo':'”','bdquo':'„','dagger':'†','Dagger':'‡','bull':'•','hellip':'…','permil':'‰','prime':'′','Prime':'″','lsaquo':'‹','rsaquo':'›','oline':'‾','frasl':'⁄','euro':'€','image':'ℑ','weierp':'℘','real':'ℜ','trade':'™','alefsym':'ℵ','larr':'←','uarr':'↑','rarr':'→','darr':'↓','harr':'↔','crarr':'↵','lArr':'⇐','uArr':'⇑','rArr':'⇒','dArr':'⇓','hArr':'⇔','forall':'∀','part':'∂','exist':'∃','empty':'∅','nabla':'∇','isin':'∈','notin':'∉','ni':'∋','prod':'∏','sum':'∑','minus':'−','lowast':'∗','radic':'√','prop':'∝','infin':'∞','ang':'∠','and':'∧','or':'∨','cap':'∩','cup':'∪','int':'∫','there4':'∴','sim':'∼','cong':'≅','asymp':'≈','ne':'≠','equiv':'≡','le':'≤','ge':'≥','sub':'⊂','sup':'⊃','nsub':'⊄','sube':'⊆','supe':'⊇','oplus':'⊕','otimes':'⊗','perp':'⊥','sdot':'⋅','vellip':'⋮','lceil':'⌈','rceil':'⌉','lfloor':'⌊','rfloor':'⌋','lang':'〈','rang':'〉','loz':'◊','spades':'♠','clubs':'♣','hearts':'♥','diams':'♦'};
+  function replaceEntity(match, entity) {
+    return ENTITIES[entity] || '';
   }
 
   //
