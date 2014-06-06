@@ -131,10 +131,11 @@
   var regexLessThanSigns = /</g;
   var regexGreaterThanSigns = />/g;
   var regexWhiteSpaces = /\s+$/g;
+  var regexBr = /<br>/gi;
   var regexDivCloseAndOpen = /<div>\s*<\/div>/gi;
-  var regexLineBreakElements = /(<div>|<\/div>|<br\/?>)/gi;
+  var regexLineBreakElements = /(<div>|<\/div>)/gi;
   var regexTags = /<[^>]+>/gi;
-  var regexSpaces = / /g;
+  var regexSpacesNotPrecedByWordBreaks = /\B /g;
   var regexMultipleSpaces = / +/g;
   var regexEntity = /&([^;]+);/g;
   function patchJQueryVal () {
@@ -146,6 +147,7 @@
           // have to use .innerHTML and manually remove all HTML tags
           // We could use .innerText, but that is not supported in Firefox
           return this[0].innerHTML
+            .replace(regexBr, '\n')
             .replace(regexDivCloseAndOpen, '\n')
             .replace(regexLineBreakElements, '\n')
             .replace(regexTags, '')
@@ -160,7 +162,7 @@
         text = text.replace(regexGreaterThanSigns, '&gt;');
         text = text.replace(regexWhiteSpaces, '&nbsp;');
         text = text.replace(regexNewLines, '<br>');
-        text = text.replace(regexSpaces, '&nbsp;');
+        text = text.replace(regexSpacesNotPrecedByWordBreaks, '&nbsp;');
         return this.html( text );
       }
       return origVal.apply(this, arguments);
