@@ -4,6 +4,9 @@ Expandable Input – A bootstrap plugin
 > A Bootstrap plugin to use <{span|div|...} contenteditable> as
   expandable inputs.
 
+[![Build Status](https://travis-ci.org/gr2m/bootstrap-expandable-input.svg)](https://travis-ci.org/gr2m/bootstrap-expandable-input)
+[![Dependency Status](https://david-dm.org/gr2m/bootstrap-expandable-input.svg)](https://david-dm.org/gr2m/bootstrap-expandable-input)
+[![devDependency Status](https://david-dm.org/gr2m/bootstrap-expandable-input/dev-status.svg)](https://david-dm.org/gr2m/bootstrap-expandable-input#info=devDependencies)
 
 Installation
 ------------
