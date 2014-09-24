@@ -22,6 +22,7 @@
       $input.on('focus', handleFocus);
       $input.on('blur', handleBlur);
       $input.on('keyup', handleKeyUp);
+      $input.on('paste', handlePaste);
     }
 
     // Event handlers
@@ -51,6 +52,15 @@
       if (enteredViaTabKey) {// TAB
         $input.select();
       }
+    }
+
+    // http://stackoverflow.com/a/19269040
+    function handlePaste ( event ) {
+      var text;
+      event.preventDefault();
+
+      text = (event.originalEvent || event).clipboardData.getData('text/plain') || window.prompt('Paste something..');
+      document.execCommand('insertText', false, text);
     }
 
 
