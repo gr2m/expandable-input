@@ -3,8 +3,8 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     release: {
-      email: 'stephan@boennemann.me',
-      name: 'Stephan Bönnemann'
+      email: 'gregor@martynus.net',
+      name: 'Gregor Martynus'
     }
   })
 };
