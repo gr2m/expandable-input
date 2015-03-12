@@ -94,6 +94,15 @@
       $input.css({
         'min-width': ''+$input.outerWidth()+'px'
       });
+
+      // add class that style has been initialised on next tick,
+      // for IE only, see
+      // https://github.com/gr2m/bootstrap-expandable-input/issues/5
+      if (/(msie|trident)/i.test(navigator.userAgent)) {
+        setTimeout(function() {
+          $input.addClass('ie-expandable-initialised')
+        })
+      }
     }
 
 

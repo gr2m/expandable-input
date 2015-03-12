@@ -20,6 +20,11 @@ html body [contenteditable]:empty:before {
 html body [contenteditable=false]:empty:before {
   visibility: hidden !important;
 }
+
+/* https://github.com/gr2m/bootstrap-expandable-input/issues/5 */
+html body .ie-expandable-initialised[contenteditable]:focus:empty:before { position: absolute; white-space: nowrap; }
+html body .ie-expandable-initialised[contenteditable]:focus:empty:after { content: '\00a0'; }
+
 @media print {
   html body [contenteditable]:empty:before {
     visibility: hidden !important;
