@@ -59,8 +59,15 @@
       var text;
       event.preventDefault();
 
-      text = (event.originalEvent || event).clipboardData.getData('text/plain') || window.prompt('Paste something..');
-      document.execCommand('insertText', false, text);
+      event = event.originalEvent || event;
+      if (event.clipboardData) {
+        text = event.clipboardData.getData('text/plain') || window.prompt('Paste something..');
+        document.execCommand('insertText', false, text);
+      } else {
+        text = window.clipboardData.getData('Text')
+        // window.getSelection.createRange().pasteHTML(text);
+        pasteHtmlAtCaret(text)
+      }
     }
 
 
@@ -100,8 +107,8 @@
       // https://github.com/gr2m/bootstrap-expandable-input/issues/5
       if (/(msie|trident)/i.test(navigator.userAgent)) {
         setTimeout(function() {
-          $input.addClass('ie-expandable-initialised')
-        })
+          $input.addClass('ie-expandable-initialised');
+        });
       }
     }
 
@@ -193,6 +200,28 @@
     return ENTITIES[entity] || '';
   }
 
+  // http://stackoverflow.com/questions/6690752/insert-html-at-caret-in-a-contenteditable-div/6691294#6691294
+  function pasteTextAtCursor(html) {
+    var sel, range;
+    sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      range = sel.getRangeAt(0);
+      range.deleteContents();
+
+      // Range.createContextualFragment() would be useful here but is
+      // only relatively recently standardized and is not supported in
+      // some browsers (IE9, for one)
+      var el = document.createElement("div");
+      el.innerHTML = html;
+      var frag = document.createDocumentFragment(), node, lastNode;
+      while ( (node = el.firstChild) ) {
+        lastNode = frag.appendChild(node);
+      }
+      var firstNode = frag.firstChild;
+      range.insertNode(frag);
+    }
+  }
+
   //
   // implements $('[contenteditable]').select()
   //
@@ -233,3 +262,4 @@
   patchJQueryVal();
   patchJQuerySelect();
 })(jQuery);
+
