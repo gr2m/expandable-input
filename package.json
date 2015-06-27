@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-expandable-input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.",
   "main": "bootstrap-expandable-input.js",
   "directories": {
