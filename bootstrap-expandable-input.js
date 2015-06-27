@@ -66,7 +66,7 @@
       } else {
         text = window.clipboardData.getData('Text')
         // window.getSelection.createRange().pasteHTML(text);
-        pasteHtmlAtCaret(text)
+        pasteTextAtCursor(text)
       }
     }
 
