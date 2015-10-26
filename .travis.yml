@@ -1,17 +1,16 @@
-before_install:
-  - npm install -g grunt-cli
-before_deploy:
-  - grunt before-deploy
-after_deploy:
-  - grunt after-deploy
+sudo: false
 language: node_js
-node_js:
-  - "0.10"
+cache:
+  directories:
+    - node_modules
 notifications:
   email: false
-deploy:
-  provider: npm
-  email: "gregor@martynus.net"
-  "on":
-    all_branches: true
-    tags: true
+node_js:
+  - '4'
+before_script:
+  - npm prune
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
