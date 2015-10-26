@@ -1,17 +1,16 @@
 {
-  "name": "bootstrap-expandable-input",
-  "version": "1.0.1",
+  "name": "expandable-input",
   "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.",
   "main": "bootstrap-expandable-input.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"no tests yet\""
+    "test": "exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gr2m/bootstrap-expanding-input.git"
+    "url": "https://github.com/gr2m/expanding-input.git"
   },
   "keywords": [
     "bootstrap",
@@ -21,9 +20,9 @@
   "author": "Gregor Martynus",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gr2m/bootstrap-expanding-input/issues"
+    "url": "https://github.com/gr2m/expanding-input/issues"
   },
-  "homepage": "https://github.com/gr2m/bootstrap-expanding-input",
+  "homepage": "https://github.com/gr2m/expanding-input",
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-semantic-release": "~0.2.1"
