@@ -1,12 +1,20 @@
 {
   "name": "expandable-input",
   "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.",
-  "main": "bootstrap-expandable-input.js",
+  "main": "expandable-input.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "exit 1",
+    "build": "bin/build.js",
+    "build:demo": "webpack --context demo/ --config demo/webpack.config.js -p",
+    "deploy": "npm run build:demo && npm run deploydocs",
+    "predeploydocs": "bin/authorize-push.js",
+    "deploydocs": "gh-pages-deploy",
+    "start": "frontend-test-server",
+    "pretest": "standard",
+    "test": "frontend-test-background mocha test/*.js",
+    "test:watch": "frontend-test-background mocha test/*.js --watch --reporter min",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -25,8 +33,28 @@
   },
   "homepage": "https://github.com/gr2m/expandable-input",
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-semantic-release": "~0.2.1",
-    "semantic-release": "^6.0.3"
+    "@gr2m/frontend-test-setup": "^1.1.6",
+    "bootstrap": "^3.3.6",
+    "browserify": "^13.0.0",
+    "chai": "^3.5.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "gh-pages-deploy": "^0.4.0",
+    "jquery": "^2.2.0",
+    "semantic-release": "^6.2.0",
+    "standard": "^5.4.1",
+    "uglify-js": "^2.6.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "standard": {
+    "ignore": [
+      "demo",
+      "dist"
+    ]
+  },
+  "frontend-test-setup": {
+    "server": {
+      "cmd": "webpack-dev-server --context demo --config demo/webpack.config.js --content-base demo -d"
+    }
   }
 }
