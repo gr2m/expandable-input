@@ -1,34 +1,29 @@
-Expandable Input – A bootstrap plugin
-=====================================
+# Expandable Input – A bootstrap plugin
 
-> A Bootstrap plugin to use <{span|div|...} contenteditable> as
-  expandable inputs.
+> A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.
 
-[![Build Status](https://travis-ci.org/gr2m/bootstrap-expandable-input.svg)](https://travis-ci.org/gr2m/bootstrap-expandable-input)
-[![Dependency Status](https://david-dm.org/gr2m/bootstrap-expandable-input.svg)](https://david-dm.org/gr2m/bootstrap-expandable-input)
-[![devDependency Status](https://david-dm.org/gr2m/bootstrap-expandable-input/dev-status.svg)](https://david-dm.org/gr2m/bootstrap-expandable-input#info=devDependencies)
+[![Build Status](https://travis-ci.org/gr2m/expandable-input.svg)](https://travis-ci.org/gr2m/expandable-input)
+[![Dependency Status](https://david-dm.org/gr2m/expandable-input.svg)](https://david-dm.org/gr2m/expandable-input)
+[![devDependency Status](https://david-dm.org/gr2m/expandable-input/dev-status.svg)](https://david-dm.org/gr2m/expandable-input#info=devDependencies)
 
-Installation
-------------
+## Installation
 
-Simplest way to install is using [bower](http://bower.io/):
+Install via [npm](https://www.npmjs.com/)
 
 ```
-bower install --save bootstrap-expandable-input
+npm install --save expandable-input
 ```
 
 
-Usage
------
+## Usage
 
 ```html
-<!-- load bootstrap assets -->
-<link rel="stylesheet" type="text/css" href="bootstrap.css">
-<script src="bootstrap.js"></script>
+<!-- load jquery -->
+<script src="jquery.js"></script>
 
 <!-- load expandable-input assets -->
-<link rel="stylesheet" type="text/css" href="bootstrap-expandable-input.css">
-<script src="bootstrap-expandable-input.js"></script>
+<link rel="stylesheet" type="text/css" href="expandable-input.css">
+<script src="expandable-input.js"></script>
 
 <!-- The behaviour is initialzied on first interaction -->
 <p>
@@ -48,17 +43,42 @@ $('[name=email]').on('input', function(event) {
 })
 ```
 
-
-Notes
------
+## Notes
 
 - `$.fn.val()` & `$.fn.select()` are being patched to work with the `contenteditable` inputs
 - `display: inline` is currently not supported. It gets set to inline-block when initialized.
 - no html5 validation or password=type etc is not supported.
 
+## Local Setup
 
-Fine Print
-----------
+```bash
+git clone git@github.com:gr2m/smartdate-input.git
+cd smartdate-input
+npm install
+```
+
+## Test
+
+You can start a local dev server with
+
+```bash
+npm start
+```
+
+Run tests with
+
+```bash
+npm test
+```
+
+While working on the tests, you can start Selenium / Chrome driver
+once, and then tests re-run on each save
+
+```bash
+npm run test:mocha:watch
+```
+
+## Fine Print
 
 The Expandable Input Plugin have been authored by [Gregor Martynus](https://github.com/gr2m),
 proud member of the [Hoodie Community](http://hood.ie/).
