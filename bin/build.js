@@ -24,6 +24,9 @@ var compiler = webpack({
       }
     ]
   },
+  modulesDirectories: [
+    'node_modules'
+  ],
   plugins: [
     new ExtractTextPlugin('expandable-input.css')
   ]

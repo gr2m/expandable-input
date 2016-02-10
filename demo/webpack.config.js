@@ -15,6 +15,9 @@ module.exports = {
       }
     ]
   },
+  modulesDirectories: [
+    'node_modules'
+  ],
   plugins: [
     new ExtractTextPlugin('bundle.css')
   ]
