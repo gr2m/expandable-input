@@ -2,6 +2,9 @@
   "name": "expandable-input",
   "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.",
   "main": "expandable-input.js",
+  "files": [
+    "dist"
+  ],
   "directories": {
     "test": "test"
   },
