@@ -50,7 +50,7 @@
     "jquery": "^2.2.0",
     "mocha": "^2.4.5",
     "semantic-release": "^6.2.0",
-    "standard": "^5.4.1",
+    "standard": "^6.0.4",
     "style-loader": "^0.13.0",
     "uglify-js": "^2.6.1",
     "url-loader": "^0.5.7",
