@@ -5,6 +5,7 @@
   "files": [
     "expandable-input.js",
     "expandable-input.css",
+    "lib",
     "dist"
   ],
   "directories": {
