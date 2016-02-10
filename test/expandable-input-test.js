@@ -45,10 +45,6 @@ describe('=== expandable-input ===', function () {
   it('inline input grows with content', function () {
     var defaultWidth
 
-    // for (var key in this.client) {
-    //   console.log(key)
-    // }
-
     return this.client
       .execute(function setNameAndGetWidth () {
         return $('[name=name]').width()
