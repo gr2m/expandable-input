@@ -6,14 +6,30 @@
 [![Dependency Status](https://david-dm.org/gr2m/expandable-input.svg)](https://david-dm.org/gr2m/expandable-input)
 [![devDependency Status](https://david-dm.org/gr2m/expandable-input/dev-status.svg)](https://david-dm.org/gr2m/expandable-input#info=devDependencies)
 
-## Installation
+## Download / Installation
 
-Install via [npm](https://www.npmjs.com/)
+You can download the latest JS & CSS code here:
+
+- https://npmcdn.com/expandable-input/dist/expandable-input.js
+- https://npmcdn.com/expandable-input/dist/expandable-input.css
+
+Or install via [npm](https://www.npmjs.com/)
 
 ```
 npm install --save expandable-input
 ```
 
+The JS code can be required with
+
+```js
+var jQuery = require('jquery')
+var expandableInput = require('expandable-input')
+
+// init
+expandableInput(jQuery)
+```
+
+The CSS code lives at `node_modules/expandable-input/expandable-input.css`
 
 ## Usage
 
