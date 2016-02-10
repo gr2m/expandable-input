@@ -56,9 +56,9 @@ describe('=== expandable-input ===', function () {
       .then(function (width) {
         defaultWidth = width
       })
-      .element('[name=name]')
+      // click also sets focus, so "keys" command enters text into the input
+      .click('[name="name"]')
       .keys('Missy Misdemour Elliot')
-      .debug()
       .execute(function setNameAndGetWidth () {
         return $('[name=name]').width()
       }).then(toValue)
