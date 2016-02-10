@@ -25,7 +25,7 @@ npm install --save expandable-input
 <link rel="stylesheet" type="text/css" href="expandable-input.css">
 <script src="expandable-input.js"></script>
 
-<!-- The behaviour is initialzied on first interaction -->
+<!-- The behaviour is initialized on first interaction -->
 <p>
   <strong>Author:</strong>
   <span contenteditable name="name" placeholder="Joe Doe"></span> |
