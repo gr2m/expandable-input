@@ -43,7 +43,7 @@ function expandableInput ($) {
     //
     function handleKeyUp (event) {
       var enteredViaTabKey = event.which === 9
-      if (enteredViaTabKey) {// TAB
+      if (enteredViaTabKey) { // TAB
         $input.select()
       }
     }
