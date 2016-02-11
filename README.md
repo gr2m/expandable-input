@@ -1,6 +1,6 @@
-# Expandable Input – A bootstrap plugin
+# Expandable Input – A jQuery plugin
 
-> A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.
+> A jQuery plugin to use <{span|div|...} contenteditable> as expandable inputs.
 
 [![Build Status](https://travis-ci.org/gr2m/expandable-input.svg)](https://travis-ci.org/gr2m/expandable-input)
 [![Dependency Status](https://david-dm.org/gr2m/expandable-input.svg)](https://david-dm.org/gr2m/expandable-input)
