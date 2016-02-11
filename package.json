@@ -1,6 +1,6 @@
 {
   "name": "expandable-input",
-  "description": "A Bootstrap plugin to use <{span|div|...} contenteditable> as expandable inputs.",
+  "description": "A jQuery plugin to use <{span|div|...} contenteditable> as expandable inputs.",
   "main": "expandable-input.js",
   "files": [
     "expandable-input.js",
