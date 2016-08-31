@@ -10,8 +10,8 @@
 
 You can download the latest JS & CSS code here:
 
-- https://npmcdn.com/expandable-input/dist/expandable-input.js
-- https://npmcdn.com/expandable-input/dist/expandable-input.css
+- https://unpkg.com/expandable-input/dist/expandable-input.js
+- https://unpkg.com/expandable-input/dist/expandable-input.css
 
 Or install via [npm](https://www.npmjs.com/)
 
