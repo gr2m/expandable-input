@@ -153,7 +153,7 @@ function expandableInput ($) {
   var regexTags = /<[^>]+>/gi
   var regexSpacesNotPrecedByWordBreaks = /\B /g
   var regexMultipleSpaces = / +/g
-  var regexEntity = /&([^]+)/g
+  var regexEntity = /&(\w+);/g
   function patchJQueryVal () {
     var origVal = $.fn.val
     $.fn.val = function (text) {
