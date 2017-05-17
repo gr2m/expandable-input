@@ -17,10 +17,9 @@
     "deploy": "npm run build:demo && npm run deploydocs",
     "predeploydocs": "bin/authorize-push.js",
     "deploydocs": "gh-pages-deploy",
-    "start": "frontend-test-server",
+    "start": "webpack-dev-server --context demo --config demo/webpack.config.js --content-base demo -d",
     "pretest": "standard",
-    "test": "frontend-test-background mocha test/*.js",
-    "test:watch": "frontend-test-background mocha test/*.js --watch --reporter min",
+    "test": "tap test/expandable-input-test.js",
     "presemantic-release": "npm run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -40,7 +39,6 @@
   },
   "homepage": "https://github.com/gr2m/expandable-input",
   "devDependencies": {
-    "@gr2m/frontend-test-setup": "^1.1.6",
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
@@ -68,9 +66,8 @@
       "dist"
     ]
   },
-  "frontend-test-setup": {
-    "server": {
-      "cmd": "webpack-dev-server --context demo --config demo/webpack.config.js --content-base demo -d"
-    }
+  "dependencies": {
+    "selsa": "^2.0.5",
+    "tap": "^10.3.2"
   }
 }
