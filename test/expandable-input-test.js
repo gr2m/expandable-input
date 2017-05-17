@@ -1,6 +1,7 @@
 /* global $ */
 var spawn = require('child_process').spawn
 
+var debug = require('debug')('test')
 var expect = require('chai').expect
 var selsa = require('selsa')
 var test = require('tap').test
@@ -28,14 +29,28 @@ selsa(selsaOptions, function (error, api) {
     throw error
   }
 
-  spawn('npm', ['start', '--', '--port', '3891'])
+  var server = spawn('./node_modules/.bin/webpack-dev-server', ['--context', 'demo', '--config', 'demo/webpack.config.js', '--content-base', 'demo', '-d', '--port', '3891'])
+  // the correct way would be to do something like this;
+  // var server = new WebpackDevServer(webpack(require('../demo/webpack.config.js')), {})
+  // but server.close() does not work, the process hangs :/ Might be fixed with v2
 
   setTimeout(function () {
-    console.log('ready?')
-
     test('=== expandable-input ===', function (group) {
       group.beforeEach(function () {
         return api.browser.url('http://localhost:3891/')
+      })
+
+      group.tearDown(function () {
+        server.kill()
+        return api.tearDown(group.passing(), function (error) {
+          if (error) {
+            return debug(error)
+          }
+
+          debug('selsa stopped')
+
+          process.exit()
+        })
       })
 
       group.test('sanity check', function (t) {
