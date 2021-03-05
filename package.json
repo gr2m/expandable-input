@@ -23,10 +23,7 @@
     "presemantic-release": "npm run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gr2m/expandable-input.git"
-  },
+  "repository": "github:gr2m/expandable-input",
   "keywords": [
     "bootstrap",
     "input",
@@ -34,10 +31,6 @@
   ],
   "author": "Gregor Martynus",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gr2m/expandable-input/issues"
-  },
-  "homepage": "https://github.com/gr2m/expandable-input",
   "devDependencies": {
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.0",
